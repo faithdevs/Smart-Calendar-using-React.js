@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Getting Started with React Calendar Component
+## Setup React Environment
+The easiest way to start with React is to use create-react-app. To scaffold your project structure, follow the installation instructions.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+	npm install -g create-react-app
+	create-react-app my-app
+	cd my-app
+	npm start
+	
+## Preparation
+Open src/App.js andsrc/App.css
 
-## Available Scripts
+Remove everything inside the App div tag in src/App.js:
+<div className="App"> </div>
+Remove the logo.svg import
+Remove the contents of src/App.css
+Remove src/logo.svg
+## Setup the Calendar
+Smart UI for React is distributed as smart-webcomponents-react NPM package
+Download and install the package.
+npm install smart-webcomponents-reactOnce installed, import the React Calendar Component and CSS files in your application and render it app.js
 
-In the project directory, you can run:
+` import 'smart-webcomponents-react/source/styles/smart.default.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Button, RepeatButton, ToggleButton, PowerButton } from 'smart-webcomponents-react/button';
+import { Calendar } from 'smart-webcomponents-react/calendar';
 
-### `yarn start`
+class App extends React.Component {
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+	init() {
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+		// Your code here.
+	}
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+	componentDidMount() {
 
-### `yarn build`
+	}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	render() {
+		return (
+			<div class="smart-demo-container">
+				<template id="templateWithButtons">
+					<Button ref="button" class="material flat">CANCEL</Button>
+					<Button ref="button2" class="material flat">OK</Button>
+				</template>
+				<div id="materialPicker">
+					<section>
+						<h2>smartCalendar</h2>
+						<div>
+							<h2>Allow users to enter dates easily and visually. You can customize date formats, language, layout, animations, selection modes and much more with the smartCalendar.</h2>
+							<div class="module"></div>
+						</div>
+					</section>
+					<section id="datePickers">
+						<h2>Date pickers</h2>
+						<div class="module">
+							<p>The selected day is indicated by a filled circle. The current day is indicated
+			                        by a different color and type weight.</p>
+							<p>Swipe left to right to navigate through the months. Touch the year in
+			                        the title bar to transition to the year view.</p>
+						</div>
+						<div class="module">
+							<div>
+								<Calendar ref="calendar" selectionMode="one" view="portrait" hideOtherMonthDays
+									viewSections={["title", "header", "footer"]} displayModeView="list"
+									footerTemplate="templateWithButtons"></Calendar>
+							</div>
+							<br />
+							<p>Date and year picker: portrait, month display mode</p>
+						</div>
+						<div class="module">
+							<div>
+								<Calendar ref="calendar2" selectionMode="one" view="portrait" hideOtherMonthDays
+									viewSections={["title", "header", "footer"]} displayModeView="list"
+									displayMode="decade" footerTemplate="templateWithButtons"></Calendar>
+							</div>
+							<br />
+							<p>Date and year picker:portrait, decade display mode.</p>
+						</div>
+						<div class="module">
+							<p>The picker has a landscape view as well to suite the different screen
+			                        orientations.</p>
+						</div>
+						<div class="module">
+							<Calendar ref="calendar3" selectionMode="one" view="landscape" hideOtherMonthDays
+								viewSections={["title", "header", "footer"]} displayModeView="list"
+								footerTemplate="templateWithButtons"></Calendar>
+							<br />
+							<p>Date picker: landscape, month display mode</p>
+						</div>
+						<div class="module">
+							<Calendar ref="calendar4" selectionMode="one" view="landscape" hideOtherMonthDays
+								viewSections={["title", "header", "footer"]} displayModeView="list"
+								displayMode="decade" footerTemplate="templateWithButtons"></Calendar>
+							<br />
+							<p>Date picker: landscape, decade display mode.</p>
+						</div>
+					</section>
+				</div>
+			</div>
+		);
+	}
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ReactDOM.render(<App />, document.querySelector("#root"));
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default App;
+`
+## Running the React application
+Start the app with
+npm startand open localhost:3000 in your favorite web browser to see the output.
+## Read more about using Smart UI for React: https://www.htmlelements.com/docs/react/.
